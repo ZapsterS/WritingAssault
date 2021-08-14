@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body{
+	background-position: center;
+  background-color: #90C98F;
+	margin: 0px 0px;
+	padding: 0px 0px;
+	font-family: 'supria_sans';
+}
+
+p {
+	font-family: 'supria_sans';
+}
+
+/*  FONTS  */
+		@font-face { /* MAIN FONT */
+				font-family: supria_sans;
+				src: url('https://zapsters.github.io/Home/fonts/SupriaSans-Bold.woff') format('woff');
+				font-weight: normal;
+				font-style: normal;
+		}
+
+		@font-face {
+		    font-family: 'bauhausc_demi';
+		    src: url('https://zapsters.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff2') format('woff2'),
+		    url('https://zapsters.github.io/Home/fonts/bauhausc_demibold_regular-webfont.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+
+.header {
+  position: relative;
+	background-color:rgba(73, 121, 53, 1);
+	width:100%;
+	text-align: center;
+	padding: 20px 0;
+}
+
+.header p {
+	font-family: 'supria_sans';
+	color: #000;
+	text-decoration: none;
+	font-size: 30px;
+	margin: 0px 0px;
+	padding: 0px 0px;
+}
+
+.bottom_div {
+	font-family: 'supria_sans';
+	position:relative;
+	bottom:0;
+	width:100%;
+	height: 40px;
+	z-index: -1;
+}
+
+.bottom_div p {
+	font-size: 15px;
+	position: fixed;
+  bottom: 0;
+	padding: 0px 3px;
+	margin: 0;
+	z-index: -1;
+}
+
+.debug_div {
+	position: absolute;
+	padding: 0px 3px;
+	height: auto;
+	background-color: rgba(255, 255, 255, 0.4);
+	z-index: -1;
+}
+
+.centered_div {
+	padding: 0px 0px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100px;
+	margin-top: -10%;
+	margin-left: -50%;
+	text-align: center;
+}
+
+.writableContent { 		/* Used with Centered_div for content */
+	margin: auto;
+  width: 60%;
+  padding: 0px;
+}
+
+@media (max-width:700px){
+	.writableContent { 		/* Used with Centered_div for content */
+		margin: auto;
+	  width: 90%;
+	  padding: 0px;
+	}
+}
+
+.messagebox { 			/* INPUT BOXES */
+	font-family: 'supria_sans';
+	text-align: center;
+	font-size: 30px;
+	width: 99%;
+	margin: 0px 0px;
+	padding: 0px;
+	background-color: #fff;
+	border: solid 1px black;
+}
+.buttonMain {			/* BUTTONS */
+	font-family: 'supria_sans';
+	font-family: 'supria_sans';
+	background: #222;
+	color: #fff;
+	border: 0px;
+	padding: 10px 10px;
+	margin: 10px 1px;
+	float: right;
+	font-size: 20px;
+}
+
+/* SUB CLASSES */
+		.noSpace {
+			padding: 0;
+			margin: 0;
+		}
+
+
+/* IMPORTED CSS */
+.div_overflow_scroll {
+	position: relative;
+  height: 80%;
+	overflow-y: scroll;
+	z-index: 1;
+}
+.sub {
+	font-family: 'supria_sans';
+	color: #000;
+	text-decoration: none;
+	font-size: 30px;
+	letter-spacing: 0px;
+	margin: 0 0px;
+	padding: 0px 0px;
+}
+.backgroundDiv {
+	background-color:rgba(73, 121, 53, 1);
+}
+.centered_joingame {
+	padding: 0px 0px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100px;
+	margin-top: -10%;
+	margin-left: -50%;
+	text-align: center;
+}
+.centered2 {
+	position: absolute;
+	padding: 20px 70px;
+	max-width: 400px;
+	width: 50%;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.horizontal {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	left: 50%;
+	margin-left: -50%;
+}
+.question {
+	padding: 0px 0px 10px 0px;
+	font-family: 'supria_sans';
+	font-size: 30px;
+}
+.playerlist {
+  width: 100%;
+  height: 0px;
+  list-style: none;
+  margin: 0px 0px 0 0;
+	padding: 0px 0px;
+  position: relative;
+  text-align: center;
+}
+.playerlist div {
+	font-family: 'supria_sans';
+  font-weight: 800;
+  background: #222;
+  padding: 0px 0px;
+  color: #fff;
+  font-size: 35px;
+  text-align: center;
+  text-decoration: none;
+	display: inline-block;
+  max-width: 700px;
+	width: 65%;
+  margin: 10px 0px;
+}
+.promptlist {
+  width: 100%;
+  height: 0px;
+  list-style: none;
+  margin: 0px 0px 0 0;
+	padding: 0px 0px;
+  position: relative;
+  text-align: center;
+}
+.promptlist p {
+	color: #333;
+	font-size: 35px;
+	margin: 20px 0px 0px 0px;
+}
+.promptlist div {
+	font-family: 'supria_sans';
+  font-weight: 800;
+  background: #222;
+  padding: 0px 0px;
+  color: #fff;
+  font-size: 35px;
+  text-align: center;
+  text-decoration: none;
+	display: inline-block;
+  max-width: 700px;
+	width: 65%;
+  margin: 0px 0px;
+}
+.playerlist div:first-child {
+	background-color: #222;
+	color: #ebb134;
+}
+.startbtn {
+	position: relative;
+	font-family: 'supria_sans';
+	background: #222;
+	color: #fff;
+	padding: 0px 0px;
+	float: bottom;
+	width: 30%;
+	font-size: 35px;
+}
+.promptbtn {
+	position: relative;
+	font-family: 'supria_sans';
+	background: #222;
+	color: #fff;
+	padding: 0px 0px;
+	float: bottom;
+	width: 30%;
+	font-size: 30px;
+	max-width: 240px;
+}
+.prompt_screen_div {
+  background-color:rgba(73, 121, 53, 0.5);
+	padding: 30px 0px 40px 0px;
+}
+
+.prompt_expand_span {
+	font-family: 'supria_sans';
+	border: solid 1px black;
+	padding: 0px;
+	display: inline-block;
+	width:80%;
+	max-width: 800px;
+	background-color: #fff;
+	text-align: left;
+	font-size: 30px;
+}
+
+.prompt_expand_span:focus{
+	outline:0;
+}
+
+.fadeanimation {
+	-webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  transition: all .2s ease;
+}
+
+#answercard2 {
+	transform: translate(0px, 0px);
+}
+
+
+</style>
+	<title>Writing Assault V2</title>
+	<link rel="shortcut icon" type="image/png" href="https://zapsters.github.io/Home/images/ZapsterGames.png"/>
+
+</head>
+
+<center>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+	<p>Writing Assault V2</p>
+</div>
+
+<!-- DEBUG MENU -->
+<div class="debug_div" id="debug_menu_div" style="display: none;">
+	<p class="noSpace">DEBUG</p>
+</div>
+
+<!-- BOTTOM DIV -->
+<div class="bottom_div" id="game_info" style="display: block">
+	<p style="right: 0;">V 2.0.1</p>
+	<p style="left: 0; bottom: 20px; display: none" id="footer_username">Logged in as: *username*</p>
+	<p style="left: 0; display: none" id="footer_roomcode">Roomcode: *roomcode*</p>
+</div>
+
+<!-- Front Page Message -->
+<div id="front_page_message_div" style="display: block; height:10px; position: relative; top: -40px;">
+	<p class="noSpace" id="front_page_mainText" style="font-size: 20px; height: 20px; padding: 3px 0px;">Improved!</p>
+	<p class="noSpace" id="front_page_subText" style="font-size: 20px; height: 20px; padding: 3px 0px;"></p>
+</div>
+
+<!-- Front Page Join Game -->
+<div class="centered_div" style="display: block;" id="joingame_div">
+	<div class="writableContent">
+		<p class="noSpace" style="font-size: 40px;">JOIN GAME</p>
+		<input id="username_input" class="messagebox" maxlength="30" placeholder="USERNAME" style="margin: 10px 0px;" autocomplete='off'></input><br>
+		<input id="roomcode_input" class="messagebox" maxlength="6" placeholder="ROOM CODE" autocomplete='off';></input><br>
+		<button id="joingame_btnid" class="buttonMain" onclick="joingameFunction()" style="cursor: pointer;">JOIN GAME</button>
+		<button id="creategame_btnid" class="buttonMain" onclick="creategameFunction()" style="cursor: pointer; float: left;">CREATE GAME</button><br><br><br><br>
+		<p id="subtext_joingame" class="question" style="font-size: 20px;">RESPONSE</p>
+	</div>
+</div>
+
+<!-- IMPORTED HTML -->
+
+<div id="prompt_answercard" style="display: none;">
+	<div id="answercard2" class="centered_joingame fadeanimation">
+		<div class="prompt_screen_div" style="background-color: transparent">
+			<p id="answercard_usernamesaid" class="sub question fadeanimation" style="font-size: 30px; padding: 0px 0px 20px; color: #333">*username* SAID,</p>
+			<span id="answercard_userresponce" class="fadeanimation prompt_expand_span" style="background-color: #222; color: #fff;">*input*</span><br><br><br>
+			<p id="answercard_voteduser_role" class="sub question fadeanimation" style="font-size: 30px; padding: 0px 0px 20px; color: #fff; opacity: 0;">*ROLE*</p>
+	</div>
+	</div>
+</div>
+
+<div class="writableContent horizontal div_overflow_scroll" style="display: none; max-width: 10000px;" id="promptlist_div">
+	<p class="sub question " style="font-size: 30px;"><br><br><br><br></p>
+	<ul class="promptlist" id="promptlist_ul">
+		<p>hi</p>
+		<div>player example</div>
+	</ul>
+</div>
+
+<div class="writableContent horizontal" style="display: none;" id="playerlist_div">
+	<p class="sub" style="font-size: 40px;">PLAYERS</p>
+	<p id="subtext_players" class="sub question" style="font-size: 35px;"></p>
+	<p id="subtext2_players" class="sub question" style="font-size: 30px;">WAITING FOR HOST<br>TO START</p>
+	<button class="startbtn" onclick="firebase.database().ref(databasePrefix + roomcode + '/users').update({_startgame: 1});" id="startbtn" style="cursor: pointer; display: none;">START GAME</button>
+	<ul class="playerlist" id="playerlist_ul">
+		<div>player example</div>
+		<div>player example</div>
+	</ul>
+</div>
+
+
+<div id="prompt_instructions_div" style="display: none;">
+	<div class="centered2" style="background-color:rgba(73, 121, 53, 0.5);">
+		<u><p class="sub">Writing Assault</p></u><br><br>
+		<p class="sub" style="font-size: 15px; max-width: 400px">One person in your group will be choosen as the imposter. It is your job to either find the imposter or to blend in with the others. Everyone will be given a prompt to answer; however, the imposter will get a slightly different prompt. Once you submit your answer, you will be told if you are an imposter or an innocent. After everyone has submitted their answers, we will share answers. You must pretend to fit in with the others or catch the imposter in their tracks.</p>
+		<br><br><p class="sub" id="prompt_instructions_counter_main" style="font-size: 26px">starting in<br></p>
+	</div>
+</div>
+
+
+<div id="prompt_screen_subheader" style="display: none; height:10px">
+	<p class="sub" style="font-size: 40px;">PROMPTS</p>
+	<p class="sub question" style="font-size: 20px; height: 20px">INNOCENTS WERE ASKED</p>
+	<p id="promt_final_question_text" class="sub question fadeanimation" style="font-size: 30px; display: none">*question*</p>
+</div>
+
+<div id="prompt_screen_div" style="display: none;">
+	<div class="centered_joingame" id="prompt_screen_input_div">
+		<div class="prompt_screen_div">
+			<p class="sub" style="font-size: 20px; display: none;">CATEGORY: [category]</p>
+			<p id="prompt_question" class="sub question" style="font-size: 30px; padding: 0px 0px 20px">[question]</p>
+			<!--<input  id="prompt_screen_input" class="messagebox prompt_input"></input><br>
+			USE A SPAN FOR prompts. Inputs will NOT grow as it overflows, while spans do!-->
+			<span id="prompt_screen_input" contenteditable="true" class="prompt_expand_span"></span><br><br><br>
+			<button class="promptbtn" onclick="
+			user_prompt_input = document.getElementById('prompt_screen_input').innerHTML;
+			firebase.database().ref(databasePrefix + roomcode + '/data/inputs/user' + usernum).update({prompt_input: user_prompt_input, username: username, usernum: usernum});
+			document.getElementById('prompt_screen_input').style.display = 'none';
+			document.getElementById('writtingAssaultprompt_submit_buttom').style.display = 'none';
+			document.getElementById('prompt_question').innerHTML = 'ANSWER SUBMITTED!<br>waiting for others.';
+			//To prevent a problem with 2 people submitting at the same time breaking the counter, add a random countdown until actually submitting their answers. idk if this will work but lets hope.
+			var range = 10000 - 1 + 1;
+			var rand = (Math.random() * range) + 50;
+			setTimeout(() => {
+				roomcode_users_promptscount_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+				roomcode_users_promptscount_ref.once('value', function(doc) {
+				roomcode_users_promptscount_data = doc.val();
+				data_promptssubmitted = roomcode_users_promptscount_data._promptssubmitted;
+				})
+				firebase.database().ref(databasePrefix + roomcode + '/users').update({_promptssubmitted: data_promptssubmitted + 1});
+			}, Math.round(rand));
+			" id="writtingAssaultprompt_submit_buttom" style="cursor: pointer;">SUBMIT</button>
+		</div>
+	</div>
+</div>
+
+
+<div id="promt_traitor_screen" style="display: none;">
+	<div class="centered_joingame">
+		<p class="sub" style="color: #e0432b; font-size: 35px;"><u>TRAITOR</u></p><br>
+		<p class="sub" style="font-size: 20px;">YOU MUST BLEND IN AND SNEAK YOUR ANSWER PAST THE OTHERS<br><br>AVOID GET VOTED OFF AT ALL COSTS</p><br>
+	</div>
+</div>
+
+<div id="promt_innocent_screen" style="display: none;">
+	<div class="centered_joingame">
+		<p class="sub" style="color: #495399; font-size: 35px;"><u>INNOCENT</u></p><br>
+		<p class="sub" style="font-size: 20px;">YOU MUST FIND THE ODD ONE OUT AND VOTE THEM OFF</p><br>
+	</div>
+</div>
+
+<div id="end_game_div" style="display: none;">
+	<div class="centered_joingame">
+		<p id="end_game_winloose" class="sub fadeanimation" style="transform:scale(5); color: transparent; font-size: 100px;"><u></u></p><br>
+	</div>
+</div>
+
+</center>
+
+
+</body>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
+
+<!-- QUESTION PROMPTS!!!! -->
+<script src="questionprompts.js"></script>
+
+<script>
+		  //FIREBASE DATABASE ---------------------------
+		  var firebaseConfig = {
+		    apiKey: "AIzaSyBTnT9iIONR7BLIaOstRXdl_VlIwxYRA24",
+		    authDomain: "zapsterdatabase.firebaseapp.com",
+		    databaseURL: "https://zapsterdatabase-default-rtdb.firebaseio.com",
+		    projectId: "zapsterdatabase",
+		    storageBucket: "zapsterdatabase.appspot.com",
+		    messagingSenderId: "847821198477",
+		    appId: "1:847821198477:web:82f54828105fe50229bec4",
+		    measurementId: "G-YC79MNPTH4"
+		  };
+		  // Initialize Firebase
+		  firebase.initializeApp(firebaseConfig);
+			var database = firebase.database();
+			var databaseRef = firebase.database().ref();
+			//END OF DATABASE CODE
+
+
+/* ======================================================== */
+
+debug_menu = document.getElementById("debug_menu_div");
+debug_menu_open = false;
+
+databasePrefix = "WritingAssaultV2/"
+
+/*
+			So this website has been kind of remade, The joining stuff is on a new database (just personal preference) so these variables are ported over. some of the functions have been tweaked and some of the bugs
+				have been fixed...
+
+			IMPORTED VARIABLES
+*/
+				var dataa;
+				var userscount_read;
+				var roomcode;
+				var username;
+				var userscount_read;
+				var newusercount;
+				var usersRef;
+				var roomcode_users_ref;
+				var roomcode_users_usercount_ref;
+				var starting = 0;
+				var categoryVal;
+				var promptpair;
+				var roomcreator = 0;
+				var innocent_prompt;
+				var traitor_prompt;
+				var traitor = 0;
+				//Gamewin = 1 == Innocents win /// Gamewin = 0 == Traitors win
+				var game_win;
+				var usernum;
+				var data_promptssubmitted;
+				var i = 1;
+				var newvotes;
+				var votefor;
+				var add_one_vote;
+				var user_with_most_values;
+				//The array below is used to store each users vote count. First term = 0 and user 0 will never exist, so we just kinda set it to a negative value so it never reads "0" has the highest vote count! ok I go away now
+				var user_votes_votingsystem = [-99];
+				var usershavevoted = 0;
+				var voted_user_data_name;
+				var roomcode_users_gett_user_data_tuser;
+				var voted_user_selection;
+				var votedoffplayer = 0;
+				var newroomscreated;
+				var state = 0;
+				var pamloaded = 0;
+				create();
+
+//ShowTextForTime Function
+lastShowTextForTimeRan = null;
+function showTextForTime(textObject, text, time) {
+  var d = new Date();
+  var n = d.getTime();
+	lastShowTextForTimeRan = n;
+	textObject.style.visibility = "visible";
+	textObject.innerHTML = text;
+	setTimeout(() => {
+		if(lastShowTextForTimeRan != n) return;
+		textObject.style.visibility = "hidden";
+	}, time);
+}
+
+//JOIN GAME BUTTON
+function joingameFunction() {
+	username = document.getElementById("username_input").value;
+	roomcode = document.getElementById("roomcode_input").value;
+	response_text_obj = document.getElementById("subtext_joingame");
+		//Check if username and roomcode are filled out
+		if (username == "") {
+			showTextForTime(response_text_obj, "ENTER A USERNAME", 1200); return;
+		}
+		if(roomcode == "") {
+			showTextForTime(response_text_obj, "ENTER A ROOMCODE", 1200);	return;
+		}
+
+		//Get Room Data!
+		room_data_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+		room_data_ref.once('value', function(doc) {
+			room_data = doc.val();
+			roomcode_users_data = doc.val();
+			if(room_data!=null) {
+				showTextForTime(response_text_obj, "Joining Room!", 1200);
+					userscount_read = roomcode_users_data._usercount;
+					newusercount = userscount_read + 1;
+					usernum = newusercount;
+					//Writes user info as roomcode/users/user[userid]
+					firebase.database().ref(databasePrefix + roomcode + '/users/user' + newusercount).set({
+					username: username,
+					votes: 0
+					});
+					//Adds one to the usercount
+					firebase.database().ref(databasePrefix + roomcode + '/users/').update({
+					_usercount: newusercount,
+					});
+					state = 1;
+					create();
+
+					//Start the check to check if _startgame is updated!
+					roomcode_users_startgame_ref = firebase.database().ref(databasePrefix + roomcode + '/users/_startgame');
+					roomcode_users_startgame_ref.on('value', function(snapshot) {
+						if(state==1) {
+							startGameFunction();
+						}
+					});
+
+					//Start the check for _roomcode_reload = 1. If it is, quit the game
+					roomcode_data_reload_ref = firebase.database().ref(databasePrefix + roomcode + '/data/_roomcode_reload');
+					roomcode_data_reload_ref.on('value', function(doc) {
+						if(state!=0) {
+							roomcodeReloadval = doc.val();
+							roomcodeReload(roomcodeReloadval);
+						}
+					});
+
+					//Start the check to check if _promptssubmitted is updated!
+					roomcode_users_promptssubmitted_ref = firebase.database().ref(databasePrefix + roomcode + '/users/_promptssubmitted');
+					roomcode_users_promptssubmitted_ref.on('value', function(snapshot) {
+						if(state == 3) {
+							promptSubmitUpdateFunction();
+						}
+					});
+
+					//Start to check if Roomcode/users/_usercount is updated. If updated, call the playerlist_reload() function
+					roomcode_users_usercount_ref = firebase.database().ref(databasePrefix + roomcode + '/users/_usercount');
+					roomcode_users_usercount_ref.on('value', function(snapshot) {
+						if(state == 1) {
+								playerlist_reload();
+						}
+					});
+			} else {
+				showTextForTime(response_text_obj, "Room does not exist", 1200);	return;
+			}
+		})
+}
+
+//CREATE GAME BUTTON
+function creategameFunction() {
+	username = document.getElementById("username_input").value;
+	response_text_obj = document.getElementById("subtext_joingame");
+		//Check if username and roomcode are filled out
+		if (username == "") {
+			showTextForTime(response_text_obj, "ENTER A USERNAME", 1200); return;
+		}
+
+	var room_to_create = Math.random().toString(20).substr(2, 6);
+	document.getElementById("roomcode_input").value = room_to_create;
+	create_roomcode_ref = firebase.database().ref(databasePrefix + room_to_create + '/users');
+	create_roomcode_ref.once('value', function(doc) {
+		create_roomcode_data = doc.val();
+		if(create_roomcode_data == null) {
+			showTextForTime(response_text_obj, "Creating room '" + room_to_create + "'", 1200);
+			setTimeout(() => {
+				document.getElementById("joingame_btnid").click();
+			}, 1000);
+			createRoom(room_to_create);
+		} else {
+			showTextForTime(response_text_obj, "That Room Already Exists", 5000);
+			return;
+		}
+	})
+}
+
+//Create room data in the database. Allows players to join said roomcode.
+function createRoom(roomcode) {
+	console.log('CREATING ROOM!')
+	firebase.database().ref(databasePrefix + roomcode + '/users').set({
+		_startgame: 0,
+		_usercount: 0,
+		_votes: 0,
+		_promptssubmitted: 0,
+		_voteduser: 0
+	});
+	firebase.database().ref(databasePrefix + roomcode + '/data').update({
+		_roomcode_reload: "0"
+	});
+	firebase.database().ref(databasePrefix + roomcode + '/data/prompts').update({
+		i_prompt: "*innocent prompt createRoom*",
+		t_prompt: "*traitor prompt*",
+		t_user: "*no user*",
+	});
+}
+
+//KEY PRESS CHECK (For dev mode and such)
+document.addEventListener("keydown", keyDownTextField, false);
+function keyDownTextField(e) {
+var keyCode = e.keyCode;
+  if(keyCode==192) {
+		if(debug_menu_open) {
+			debug_menu_open = false;
+			debug_menu.style.display = "none";
+		} else if(!debug_menu_open) {
+			debug_menu_open = true;
+			debug_menu.style.display = "block";
+		}
+  }
+}
+
+
+/* IMPORTED FUNCTIONS */
+
+window.onbeforeunload = function(){
+	if(usernum == 1) {
+		firebase.database().ref(databasePrefix + roomcode + '/data').update({
+		});
+	}
+	switch(state){
+		case 0:
+		break;
+		default:
+		firebase.database().ref(databasePrefix + roomcode + '/data').update({
+		});
+		break;
+	}
+}
+
+//Function roomcodeReload(). Called when _roomcode_reload is changed
+//RAN BY EVERYONE!
+function roomcodeReload(reason) {
+	console.log('roomcodeReload', reason)
+	switch(reason) {
+		//Should never be called at 0
+		case '0':
+		//console.error('roomcodeReload called at 0')
+		break;
+		case '1':
+		//Player closed out of browser
+		deleteRoom(roomcode);
+		alert('Someone left or closed out of their browser. Deleting room.')
+		location.reload();
+		break;
+		case '2':
+		//Admin Reloading
+		deleteRoom(roomcode);
+		alert('An admin has restarted your roomcode. Deleting room.')
+		location.reload();
+		break;
+		default:
+		//Admin messagebox
+		alert(reason)
+		break;
+	}
+}
+
+//Semi-reset room/ Called in state6 to restart game
+function resetRoomVariable() {
+	if(state == 0 || state == 1) {
+		firebase.database().ref(databasePrefix + roomcode + '/users').update({
+			_startgame: 0,
+			_votes: 0,
+			_promptssubmitted: 0,
+			_voteduser: 0
+		});
+		firebase.database().ref(databasePrefix + roomcode + '/data/prompts').update({
+			i_prompt: "*innocent prompt createRoom*",
+			t_prompt: "*traitor prompt*",
+			t_user: "*no user*"
+		});
+		firebase.database().ref(databasePrefix + roomcode + '/data/inputs').set({
+
+		});
+	}
+}
+
+//Delete Room in database
+function deleteRoom(roomcode) {
+	firebase.database().ref(roomcode).set({
+	});
+}
+
+//Create function -- Creates each state.
+function create() {
+	switch(state) {
+		case 0:
+		document.getElementById('joingame_div').style.display = 'block';
+		document.getElementById('playerlist_div').style.display = 'none';
+				document.getElementById('front_page_message_div').style.display = 'block';
+		break;
+		case 1:
+		document.getElementById('joingame_div').style.display = 'none';
+		document.getElementById('playerlist_div').style.display = 'block';
+		document.getElementById('end_game_div').style.display = 'none';
+		document.getElementById('front_page_message_div').style.display = 'none';
+		document.getElementById('prompt_screen_subheader').style.display = 'none';
+		break;
+		case 2:
+		document.getElementById('joingame_div').style.display = 'none';
+		document.getElementById('playerlist_div').style.display = 'none';
+		document.getElementById('prompt_instructions_div').style.display = 'block';
+		document.getElementById('footer_roomcode').style.display = 'block';
+		document.getElementById('footer_username').style.display = 'block';
+		document.getElementById('footer_roomcode').innerHTML = 'Roomcode: ' + roomcode;
+		document.getElementById('footer_username').innerHTML = 'Logged in as: ' + username;
+
+
+		document.getElementById('prompt_instructions_counter_main').innerHTML = 'The game will start soon...';
+		//Countdown to hide the instructions screen then to show the prompt
+		setTimeout(function () {
+			state = 3
+			create();
+		}, 7000);
+		break;
+		case 3:
+		document.getElementById('joingame_div').style.display = 'none';
+		document.getElementById('playerlist_div').style.display = 'none';
+		document.getElementById('prompt_instructions_div').style.display = 'none';
+		setTimeout(function () {
+			document.getElementById('prompt_screen_div').style.display = 'block';
+		}, 100);
+		break;
+		case 4:
+		document.getElementById('prompt_screen_subheader').style.display = 'inline-block'
+		//document.getElementById('prompt_screen_subheader').innerHTML = 'ANSWERS ARE IN!'
+		document.getElementById("promt_final_question_text").innerHTML = '*innocent_prompt*';
+		document.getElementById("promt_final_question_text").style.fontSize = "30px";
+		document.getElementById("promt_final_question_text").style.display = "inline-block";
+		break;
+		case 5:
+		document.getElementById("prompt_screen_subheader").style.display = "inline-block";
+		document.getElementById("promptlist_div").style.display = "inline-block";
+		document.getElementById('joingame_div').style.display = 'none';
+		document.getElementById('playerlist_div').style.display = 'none';
+		document.getElementById('prompt_instructions_div').style.display = 'none';
+		promptvotinglist();
+		break;
+		//Win screen
+		case 6:
+		document.getElementById("prompt_screen_subheader").style.display = "none";
+		document.getElementById("promptlist_div").style.display = "none";
+		document.getElementById('joingame_div').style.display = 'none';
+		document.getElementById('playerlist_div').style.display = 'none';
+		document.getElementById('prompt_instructions_div').style.display = 'none';
+		document.getElementById('end_game_div').style.display = 'inline-block';
+		setTimeout(() => {
+			state = 1;
+			//createRoom(roomcode);
+			resetRoomVariable();
+			resetWebpage();
+			setTimeout(() => {
+				state = 1;
+				starting = 0;
+				usershavevoted = 0;
+			}, 500);
+		}, 4000);
+		if (game_win == 1) {
+			//Gamewin = 1 WHEN INNOCENTS WIN
+			if(traitor == 1) {
+				document.getElementById('end_game_winloose').innerHTML = 'DEFEAT';
+				document.getElementById('end_game_winloose').style.color = '#e0432b';
+				document.getElementById('end_game_winloose').style.transform = "scale(1)";
+			} else if(traitor == 0)  {
+				document.getElementById('end_game_winloose').innerHTML = 'VICTORY';
+				document.getElementById('end_game_winloose').style.color = '#495399';
+				document.getElementById('end_game_winloose').style.transform = "scale(1)";
+			} else {
+				document.getElementById('end_game_winloose').innerHTML = 'gamewin != 0 or 1. Tell aaron.';
+				document.getElementById('end_game_winloose').style.fontSize = '30px';
+				document.getElementById('end_game_winloose').style.color = '#fff';
+				document.getElementById('end_game_winloose').style.transform = "scale(1)";
+			}
+		} else {
+		//Gamewin = 0 WHEN TRAITORS WIN
+			if(traitor == 1) {
+				document.getElementById('end_game_winloose').innerHTML = 'VICTORY';
+				document.getElementById('end_game_winloose').style.color = '#495399';
+				document.getElementById('end_game_winloose').style.transform = "scale(1)";
+			} else if(traitor == 0) {
+				document.getElementById('end_game_winloose').innerHTML = 'DEFEAT';
+				document.getElementById('end_game_winloose').style.color = '#e0432b';
+				document.getElementById('end_game_winloose').style.transform = "scale(1)";
+			} else {
+				document.getElementById('end_game_winloose').innerHTML = 'gamewin != 0 or 1. Tell aaron.';
+				document.getElementById('end_game_winloose').style.fontSize = '30px';
+				document.getElementById('end_game_winloose').style.color = '#fff';
+				document.getElementById('end_game_winloose').style.transform = "scale(1)";
+			}
+		}
+		break;
+	}
+}
+
+//When playing the game, variables are changed (DUH) so restarting the game without refreshing the website MIGHT break it.
+//This function is used when restarting the game in state6
+//THIS FUNCTION RESETS THE ROOMCODE AND SENDS THE PLAYERS BACK TO THE PLAYERLIST!!!!!!
+function resetWebpage() {
+	document.getElementById('prompt_screen_input').style.display = 'inline-block';
+	document.getElementById('prompt_screen_input').innerHTML = '';
+	document.getElementById('writtingAssaultprompt_submit_buttom').style.display = 'inline-block';
+	document.getElementById("promt_final_question_text").innerHTML = '';
+	document.getElementById("promptlist_div").style.display = 'none';
+	document.getElementById('subtext2_players').innerHTML = "WAITING FOR HOST<br>TO START"
+	var state = 1;
+	firebase.database().ref(databasePrefix + roomcode + '/users/user' + usernum).update({
+	votes: 0
+	});
+	create();
+	//var dataa;
+	//var userscount_read;
+	//var roomcode; - We dont want to reset the room code because we are going back to the player screen
+	//var username; - do not reset the username
+	var userscount_read;
+	var newusercount;
+	var usersRef;
+	var roomcode_users_ref;
+	var roomcode_users_usercount_ref;
+	var starting = 0;
+	var categoryVal;
+	var promptpair;
+	//var roomcreator = 0;
+	var innocent_prompt;
+	var traitor_prompt;
+	var traitor = 0;
+	var usernum;
+	var data_promptssubmitted;
+	var i;
+	var newvotes;
+	var votefor;
+	var add_one_vote;
+	var user_with_most_values;
+	//The array below is used to store each users vote count. First term = 0 and user 0 will never exist, so we just kinda set it to a negative value so it never reads "0" has the highest vote count! ok I go away now
+	var user_votes_votingsystem = [-99];
+	var usershavevoted = 0;
+	var voted_user_data_name;
+	var roomcode_users_gett_user_data_tuser;
+	var voted_user_selection;
+	var game_win = 0;
+	var votedoffplayer = 0;
+}
+
+//Called when roomcode/users/_promptssubmitted is changed
+function promptSubmitUpdateFunction() {
+	setTimeout(() => {
+		if (state == 3) {
+			console.log('promptSubmitUpdateFunction', state);
+			roomcode_users_promptscount_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+			roomcode_users_promptscount_ref.once('value', function(doc) {
+				if (state == 3) {
+					roomcode_users_promptscount_data = doc.val();
+					data_promptssubmitted = roomcode_users_promptscount_data._promptssubmitted;
+					data_usercount = roomcode_users_promptscount_data._usercount;
+				}
+			})
+			if(data_promptssubmitted == data_usercount) {
+				//document.getElementById('prompt_question').innerHTML = 'THE RESPONCES ARE IN!';
+				//document.getElementById('subtext_promt_screen_main').innerHTML = 'INNOCENTS WERE ASKED...';
+				//document.getElementById('subtext_prompt_screen').innerHTML = '*question*';
+				//subtext_promt_screen_main
+				//subtext_prompt_screen
+				//data_promptssubmitted = 0;
+				document.getElementById('prompt_question').innerHTML = 'ANSWERS ARE IN!'
+				//Set the question at a high font size so the animation starts at a big size
+				setTimeout(() => {
+					document.getElementById('prompt_screen_div').style.display = 'none'
+					setTimeout(() => {
+						if (traitor == 1) {
+							document.getElementById('promt_traitor_screen').style.display = 'inline-block'
+						} else if (traitor == 0) {
+							document.getElementById('promt_innocent_screen').style.display = 'inline-block'
+						}
+						setTimeout(() => {
+							document.getElementById('promt_innocent_screen').style.display = 'none'
+							document.getElementById('promt_traitor_screen').style.display = 'none'
+							setTimeout(() => {
+								document.getElementById("prompt_screen_subheader").style.display = "inline-block";
+								setTimeout(() => {
+									document.getElementById("promt_final_question_text").innerHTML = innocent_prompt;
+									document.getElementById("promt_final_question_text").style.fontSize = "200px";
+									document.getElementById("promt_final_question_text").style.display = "inline-block";
+									setTimeout(() => {
+										document.getElementById("promt_final_question_text").style.fontSize = "30px";
+										state = 4;
+										setTimeout(() => {
+											readResponces();
+											var voteduser_ref = firebase.database().ref(databasePrefix + roomcode + '/users/_voteduser');
+											voteduser_ref.on('value', function(doc) {
+												if(state=5) {
+													voteoffPlayer();
+												}
+											});
+										}, 2500);
+									}, 10);
+								}, 5000);
+							}, 1000);
+						}, 5000);
+					}, 1000);
+				}, 2000);
+			}
+		}
+	}, 1000);
+}
+
+function readResponces() {
+	document.getElementById('answercard_userresponce').style.transform = "scale(5) ";
+	document.getElementById('answercard_userresponce').style.opacity = "0";
+	roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+	roomcode_users_ref.once('value', function(doc) {
+		roomcode_users_data = doc.val();
+		promptssubmitted = roomcode_users_data._promptssubmitted;
+		i = 1;
+		card();
+		//for (var i = 1; i <= promptssubmitted; i++) {
+	})
+}
+
+function card() {
+		console.log('card', state)
+	document.getElementById('prompt_answercard').style.display = "inline-block";
+	document.getElementById('answercard_usernamesaid').style.transform = "scale(5)";
+	document.getElementById('answercard_usernamesaid').style.opacity = "0";
+	document.getElementById('answercard_userresponce').style.transform = "scale(5)";
+	document.getElementById('answercard_userresponce').style.opacity = "0";
+	roomcode_data_inputs_user_ref = firebase.database().ref(databasePrefix + roomcode + '/data/inputs/user' + i);
+	roomcode_data_inputs_user_ref.once('value', function(doc) {
+		if(state = 4) {
+			roomcode_data_inputs_user_data = doc.val();
+			roomcode_data_inputs_user_username_data = roomcode_data_inputs_user_data.username;
+			roomcode_data_inputs_user_prompt_data = roomcode_data_inputs_user_data.prompt_input;
+		}
+	})
+
+	setTimeout(function() {
+		document.getElementById('answercard_usernamesaid').innerHTML = roomcode_data_inputs_user_username_data + ' said,';
+		document.getElementById('answercard_userresponce').innerHTML = roomcode_data_inputs_user_prompt_data;
+		document.getElementById('answercard_usernamesaid').style.transform = "scale(1)";
+		document.getElementById('answercard_usernamesaid').style.opacity = "1";
+		setTimeout(function() {
+			document.getElementById('answercard_userresponce').style.transform = "scale(1)";
+			document.getElementById('answercard_userresponce').style.opacity = "1";
+			i++;
+			setTimeout(function() {
+				document.getElementById('answercard_userresponce').style.transform = "scale(5)";
+				document.getElementById('answercard_userresponce').style.opacity = "0";
+				document.getElementById('answercard_usernamesaid').style.transform = "scale(5)";
+				document.getElementById('answercard_usernamesaid').style.opacity = "0";
+				if (i <= promptssubmitted) {
+					//If more cards left, show the next one
+					setTimeout(function() {
+						card();
+					}, 10);
+				} else {
+					//If no more cards, hide the div.
+					setTimeout(function() {
+						document.getElementById('prompt_answercard').style.display = "none";
+						state = 5;
+						create();
+					}, 1000);
+				}
+				//How long the card shows
+			}, 4000);
+			//How long the name stays before the card is shown
+		}, 2500);
+		//Delay between each new card.
+	}, 1000);
+}
+
+//State 5 - Create list of prompt answers for voting
+function promptvotinglist() {
+	console.log('promptvotinglist', state)
+	if (state == 5) {
+		if(roomcreator == 1) {
+			checkVoting();
+		}
+		document.getElementById("promptlist_ul").innerHTML = "";
+		roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+		roomcode_users_ref.once('value', function(doc) {
+			roomcode_promptssubmitted_data = doc.val();
+			promptssubmitted_read = roomcode_promptssubmitted_data._promptssubmitted;
+			for (var i = 1; i <= promptssubmitted_read; i++) {
+				roomcode_data_inputs_user_userprompt_ref = firebase.database().ref(databasePrefix + roomcode + '/data/inputs/user' + i);
+				roomcode_data_inputs_user_userprompt_ref.once('value', function(doc) {
+					roomcode_data_inputs_user_userprompt_data = doc.val();
+					roomcode_data_inputs_user_userprompt_promptdata = roomcode_data_inputs_user_userprompt_data.prompt_input;
+					roomcode_data_inputs_user_userprompt_username = roomcode_data_inputs_user_userprompt_data.username;
+					roomcode_data_inputs_user_userprompt_usernum = roomcode_data_inputs_user_userprompt_data.usernum;
+					//Create a div with the player's name inside of it
+					var nodep = document.createElement("p");
+					var textnodep = document.createTextNode(roomcode_data_inputs_user_userprompt_username);
+					nodep.appendChild(textnodep);
+					document.getElementById("promptlist_ul").appendChild(nodep);
+
+					var nodediv = document.createElement("div");
+					nodediv.setAttribute("id", roomcode_data_inputs_user_userprompt_usernum);
+					nodediv.onclick = function () {
+						votefor = String(this.id);
+						//Onclick - Add 1 to _votes and submit their vote to database
+						document.getElementById("promptlist_ul").innerHTML = "";
+							roomcode_users_voteuser_ref = firebase.database().ref(databasePrefix + roomcode + '/users/user' + votefor);
+							roomcode_users_voteuser_ref.once('value', function(doc) {
+								roomcode_users_voteuser_data = doc.val();
+								roomcode_users_voteuser_data_votes = roomcode_users_voteuser_data.votes;
+								add_one_vote = roomcode_users_voteuser_data_votes + 1
+								firebase.database().ref(databasePrefix + roomcode + '/users/user' + votefor).update({
+									votes: add_one_vote,
+								});
+							})
+							roomcode_users_votes_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+							roomcode_users_votes_ref.once('value', function(doc) {
+								roomcode_users_votes_data = doc.val();
+								roomcode_users_votes_data_votes = roomcode_users_votes_data._votes;
+								newvotes = roomcode_users_votes_data_votes + 1
+								firebase.database().ref(databasePrefix + roomcode + '/users').update({
+									_votes: newvotes
+								});
+							})
+						};
+					var textnodediv = document.createTextNode(roomcode_data_inputs_user_userprompt_promptdata);
+					nodediv.appendChild(textnodediv);
+					document.getElementById("promptlist_ul").appendChild(nodediv);
+				})
+			}
+		})
+	}
+}
+
+//Called by the host after promptssubmitted() is called.
+//Ran everytime a vote is submitted.
+function checkVoting() {
+	roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+	roomcode_users_ref.on('value', function(doc) {
+		if(state == 5) {
+			roomcode_users_data = doc.val();
+			userscount_read = roomcode_users_data._usercount;
+			votecount_read = roomcode_users_data._votes;
+			if (userscount_read == votecount_read) {
+				//Ran if all users have voted.
+				for (i = 1; i <= userscount_read; i++) {
+					roomcode_users_user_ref = firebase.database().ref(databasePrefix + roomcode + '/users/user' + i);
+					roomcode_users_user_ref.once('value', function(doc) {
+						roomcode_users_user_data = doc.val();
+						current_user_votes = roomcode_users_user_data.votes;
+						user_votes_votingsystem[i] = current_user_votes;
+						if(i == userscount_read) {
+					 		user_with_most_values = Math.max(...user_votes_votingsystem)
+							for (i = 1; i <= userscount_read; i++) {
+								roomcode_users_user_ref = firebase.database().ref(databasePrefix + roomcode + '/users/user' + i);
+								roomcode_users_user_ref.once('value', function(doc) {
+									roomcode_users_user_data = doc.val();
+									current_user_votes = roomcode_users_user_data.votes;
+									if (current_user_votes == user_with_most_values && usershavevoted != 1) {
+										usershavevoted = 1;
+										//i is set to 900 so it does not choose 2 people to vote off. If two or more people tie, the person who joined the room sooner (with the lower user#) will be voted off.
+										//Write to the database that the voteduser = user_with_most_values
+										firebase.database().ref(databasePrefix + roomcode + '/users').update({
+											_voteduser: i
+										});
+										//voteoffPlayer();
+									}
+								})
+							}
+						}
+					})
+				}
+			}
+		}
+	})
+}
+
+
+//Called by EVERYONE after _voteduser is updated. at line 759.
+//Ran when _voteduser is updated.
+function voteoffPlayer() {
+	roomcode_users_voteduser_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+	roomcode_users_voteduser_ref.on('value', function(doc) {
+	roomcode_users_voteduser_data = doc.val();
+	voted_user_selection = roomcode_users_voteduser_data._voteduser;
+		if(state == 5 && voted_user_selection != 0) {
+			//roomcode_users_voteduser_data = doc.val();
+			//voted_user_selection = roomcode_users_voteduser_data._voteduser;
+			roomcode_users_getvoteduserdata_ref = firebase.database().ref(databasePrefix + roomcode + '/data/inputs/user' + voted_user_selection);
+			roomcode_users_getvoteduserdata_ref.once('value', function(doc) {
+				if(state == 5) {
+				roomcode_users_getvoteduserdata_data = doc.val();
+				console.log(roomcode_users_getvoteduserdata_data, state);
+				voted_user_data_name = roomcode_users_getvoteduserdata_data.username;
+				voted_user_data_promptinput = roomcode_users_getvoteduserdata_data.prompt_input;
+				//Now that we got the looser's data, we must display their card and answer then show their role.
+				roomcode_users_gett_user_ref = firebase.database().ref(databasePrefix + roomcode + '/data/prompts');
+				roomcode_users_gett_user_ref.on('value', function(doc) {
+					roomcode_users_gett_user_data = doc.val();
+					roomcode_users_gett_user_data_tuser = roomcode_users_gett_user_data.t_user;
+				})
+				if(roomcode_users_gett_user_data_tuser == voted_user_selection) {
+					document.getElementById('answercard_voteduser_role').innerHTML = 'TRAITOR<br><p style="font-size: 35px; color: #000">' + traitor_prompt + "</p>";
+					document.getElementById('answercard_voteduser_role').style.color = "#e0432b";
+					game_win = 1;
+				} else {
+					document.getElementById('answercard_voteduser_role').innerHTML = 'INNOCENT';
+					document.getElementById('answercard_voteduser_role').style.color = "#495399";
+					game_win = 0;
+				}
+				document.getElementById('promptlist_div').style.display = "none";
+				document.getElementById('prompt_answercard').style.display = "inline-block";
+				document.getElementById('answercard_usernamesaid').style.transform = "scale(5)";
+				document.getElementById('answercard_usernamesaid').style.opacity = "0";
+				document.getElementById('answercard_userresponce').style.transform = "scale(5)";
+				document.getElementById('answercard_userresponce').style.opacity = "0";
+				document.getElementById('answercard_voteduser_role').style.transform = "scale(5)";
+				document.getElementById('answercard_voteduser_role').style.opacity = "0";
+				setTimeout(function() {
+					document.getElementById('answercard_usernamesaid').innerHTML = 'User voted off,<br>' + voted_user_data_name;
+					document.getElementById('answercard_userresponce').innerHTML = voted_user_data_promptinput;
+					document.getElementById('answercard_usernamesaid').style.transform = "scale(1)";
+					document.getElementById('answercard_usernamesaid').style.opacity = "1";
+					setTimeout(function() {
+						document.getElementById('answercard_userresponce').style.transform = "scale(1)";
+						document.getElementById('answercard_userresponce').style.opacity = "1";
+						setTimeout(function() {
+							//Show the ROLE
+							document.getElementById('answercard_voteduser_role').style.transform = "scale(1)";
+							document.getElementById('answercard_voteduser_role').style.opacity = "1";
+							setTimeout(function() {
+								document.getElementById('answercard_userresponce').style.transform = "scale(5)";
+								document.getElementById('answercard_userresponce').style.opacity = "0";
+								document.getElementById('answercard_usernamesaid').style.transform = "scale(5)";
+								document.getElementById('answercard_usernamesaid').style.opacity = "0";
+								document.getElementById('answercard_voteduser_role').style.transform = "scale(5)";
+								document.getElementById('answercard_voteduser_role').style.opacity = "0";
+								setTimeout(function() {
+									document.getElementById('prompt_answercard').style.display = "none";
+									state = 6;
+									create();
+									//How long until state 6 is created
+								}, 1000);
+								//How long until the card goes away
+							}, 10000);
+							//How long to wait before their role pops up & prompt
+						}, 6000);
+						//How long to wait before their answer shows up
+					}, 4500);
+					//Delay before their name shows up
+				}, 1000);
+
+
+				}
+			})
+		}
+	})
+}
+
+//startGameFunction-CALLED ANYTIME ROOMCODE/USERS IS UPDATED! USED FOR STARTINGTHEGAME
+function startGameFunction() {
+	//startgamefunction
+	if (state == 1 && starting == 0) {
+			console.log('startGameFunction', state)
+		roomcode_users_startgame_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+		roomcode_users_startgame_ref.on('value', function(doc) {
+			if (state == 1 && starting == 0) {
+				roomcode_users_startgame_data = doc.val();
+				roomcode_users_startgame_value = roomcode_users_startgame_data._startgame;
+				if (roomcode_users_startgame_value == 1 && starting == 0 && state == 1) {
+					starting = 1;
+					console.log('STARTING GAME!', state)
+					document.getElementById('subtext2_players').innerHTML = "STARTING IN<br>3..."
+					setTimeout(function () {
+						document.getElementById('subtext2_players').innerHTML = "STARTING IN<br>2..."
+						setTimeout(function () {
+							document.getElementById('subtext2_players').innerHTML = "STARTING IN<br>1..."
+							setTimeout(function () {
+								document.getElementById('subtext2_players').innerHTML = "STARTING!<br>"
+								setTimeout(function () {
+									document.getElementById('playerlist_div').style.display = 'none';
+									setTimeout(function () {
+										//If room creator, make new prompts.
+										if (roomcreator == 1) {
+											generateNewQuestion();
+
+										}
+										//Start to listen for updates in the prompts folder
+										roomcode_data_prompts_startgame_ref = firebase.database().ref(databasePrefix + roomcode + '/data/prompts');
+										roomcode_data_prompts_startgame_ref.on('value', function(snapshot) {
+											promptsAssignedFunction();
+										});
+										setTimeout(function () {
+											state = 2;
+											create();
+										}, 1000);
+									}, 1000);
+								}, 1000);
+							}, 1000);
+						}, 1000);
+					}, 1000);
+				}
+			}
+		})
+	}
+}
+
+function promptsAssignedFunction() {
+	if (state == 1) {
+		roomcode_data_prompts_startgame_ref = firebase.database().ref(databasePrefix + roomcode + '/data/prompts');
+		roomcode_data_prompts_startgame_ref.once('value', function(doc) {
+			if (state == 1) {
+				roomcode_data_prompt_startgame_data = doc.val();
+				innocent_prompt = roomcode_data_prompt_startgame_data.i_prompt;
+				traitor_prompt = roomcode_data_prompt_startgame_data.t_prompt;
+				user_traitor = roomcode_data_prompt_startgame_data.t_user;
+				if (user_traitor == usernum) {
+					traitor = 1;
+				} else {
+					traitor = 0;
+				}
+				if(traitor == 1) {
+					document.getElementById('prompt_question').innerHTML = traitor_prompt;
+				} else if (traitor == 0) {
+					document.getElementById('prompt_question').innerHTML = innocent_prompt;
+				} else {
+					console.error('NO TRAITOR/INNOCENT ROLE!')
+				}
+			}
+		});
+	}
+}
+
+//Generate New Question AND choose a random user to be a traitor
+function generateNewQuestion() {
+  //Arrays are in questionprompts.js. [prompts]
+	var random = Math.floor(Math.random() * prompts.length);
+	//promptGroup is the set of 2 prompts, one innocent one traitor.
+	var promptsGroup = prompts[random]
+	//Split the string into 2 seperate prompts, innocent & traitor
+	var prompts_choose = promptsGroup.split("///");
+	innocent_prompt = prompts_choose[0];
+	traitor_prompt = prompts_choose[1];
+
+
+	roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+	roomcode_users_ref.once('value', function(doc) {
+		roomcode_users_data = doc.val();
+		userscount_read = roomcode_users_data._usercount;
+	})
+	traitor_number = Math.floor(Math.random() * userscount_read + 1);
+	//Write the prompts
+	firebase.database().ref(databasePrefix + roomcode + '/data/prompts').update({i_prompt: innocent_prompt, t_prompt: traitor_prompt, t_user: traitor_number});
+}
+
+//Called whenever a player joins the room (INCLUDING SELF)
+function playerlist_reload() {
+	if (state == 1) {
+		document.getElementById("subtext_players").innerHTML = roomcode;
+		document.getElementById("playerlist_ul").innerHTML = "";
+		roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
+		roomcode_users_ref.once('value', function(doc) {
+			if (state == 1) {
+				roomcode_users_data = doc.val();
+				userscount_read = roomcode_users_data._usercount;
+				//If the current user is the first user in the room, give them the start button and make vip=1
+				if(userscount_read == 1) {
+					document.getElementById('startbtn').style.display = 'inline-block';
+					roomcreator = 1;
+				}
+				for (i = 1; i <= userscount_read; i++) {
+					roomcode_users_user_ref = firebase.database().ref(databasePrefix + roomcode + '/users/user' + i);
+					roomcode_users_user_ref.once('value', function(doc) {
+						roomcode_users_user_data = doc.val();
+						roomcode_users_user_username_data = roomcode_users_user_data.username;
+						//Create a div with the player's name inside of it
+						var node = document.createElement("div");
+						var textnode = document.createTextNode(roomcode_users_user_username_data);
+						node.appendChild(textnode);
+						document.getElementById("playerlist_ul").appendChild(node);
+					})
+				}
+			}
+		})
+	}
+}
+
+//Error function if data could no be retreved from database.
+function errData() {
+	console.error('ERROR!');
+}
+
+
+</script>
+
+</body>
+</html>
