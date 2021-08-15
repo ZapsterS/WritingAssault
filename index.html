@@ -328,7 +328,7 @@ p {
 		<input id="roomcode_input" class="messagebox" maxlength="6" placeholder="ROOM CODE" autocomplete='off';></input><br>
 		<button id="joingame_btnid" class="buttonMain" onclick="joingameFunction()" style="cursor: pointer;">JOIN GAME</button>
 		<button id="creategame_btnid" class="buttonMain" onclick="creategameFunction()" style="cursor: pointer; float: left;">CREATE GAME</button><br><br><br><br>
-		<p id="subtext_joingame" class="question" style="font-size: 20px;">RESPONSE</p>
+		<p id="subtext_joingame" class="question" style="font-size: 20px;"></p>
 	</div>
 </div>
 
@@ -687,9 +687,6 @@ function roomcodeReload(reason) {
 	console.log('roomcodeReload', reason)
 	switch(reason) {
 		//Should never be called at 0
-		case '0':
-		//console.error('roomcodeReload called at 0')
-		break;
 		case '1':
 		//Player closed out of browser
 		deleteRoom(roomcode);
