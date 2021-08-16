@@ -188,6 +188,9 @@ p {
 	padding: 0px 0px;
   position: relative;
   text-align: center;
+	display: block;
+	float: left;
+  clear: left;
 }
 .playerlist div {
 	font-family: 'supria_sans';
@@ -198,10 +201,12 @@ p {
   font-size: 35px;
   text-align: center;
   text-decoration: none;
-	display: inline-block;
+	display: block;
+	margin: auto;
   max-width: 700px;
 	width: 65%;
-  margin: 10px 0px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 .promptlist {
   width: 100%;
@@ -357,10 +362,10 @@ p {
 	<p id="subtext_players" class="sub question" style="font-size: 35px;"></p>
 	<p id="subtext2_players" class="sub question" style="font-size: 30px;">WAITING FOR HOST<br>TO START</p>
 	<button class="startbtn" onclick="firebase.database().ref(databasePrefix + roomcode + '/users').update({_startgame: 1});" id="startbtn" style="cursor: pointer; display: none;">START GAME</button>
-	<li class="playerlist" id="playerlist_li">
+	<div class="playerlist" id="playerlist_li">
 		<div>player example</div>
 		<div>player example</div>
-	</li>
+	</div>
 </div>
 
 
