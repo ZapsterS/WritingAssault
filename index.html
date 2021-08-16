@@ -357,10 +357,10 @@ p {
 	<p id="subtext_players" class="sub question" style="font-size: 35px;"></p>
 	<p id="subtext2_players" class="sub question" style="font-size: 30px;">WAITING FOR HOST<br>TO START</p>
 	<button class="startbtn" onclick="firebase.database().ref(databasePrefix + roomcode + '/users').update({_startgame: 1});" id="startbtn" style="cursor: pointer; display: none;">START GAME</button>
-	<ul class="playerlist" id="playerlist_ul">
+	<li class="playerlist" id="playerlist_li">
 		<div>player example</div>
 		<div>player example</div>
-	</ul>
+	</li>
 </div>
 
 
@@ -574,10 +574,10 @@ function joingameFunction() {
 					//Start the check for _roomcode_reload = 1. If it is, quit the game
 					roomcode_data_reload_ref = firebase.database().ref(databasePrefix + roomcode + '/data/_roomcode_reload');
 					roomcode_data_reload_ref.on('value', function(doc) {
-						if(state!=0) {
-							roomcodeReloadval = doc.val();
-							roomcodeReload(roomcodeReloadval);
-						}
+            roomcodeReloadval = doc.val();
+            if(roomcodeReloadval == 1) {
+              roomcodeReload(roomcodeReloadval);
+            }
 					});
 
 					//Start the check to check if _promptssubmitted is updated!
@@ -665,45 +665,17 @@ var keyCode = e.keyCode;
 
 
 /* IMPORTED FUNCTIONS */
-
 window.onbeforeunload = function(){
-	if(usernum == 1) {
-		firebase.database().ref(databasePrefix + roomcode + '/data').update({
-		});
-	}
-	switch(state){
-		case 0:
-		break;
-		default:
-		firebase.database().ref(databasePrefix + roomcode + '/data').update({
-		});
-		break;
-	}
+  if(state!=0) deleteRoom(roomcode);
 }
 
 //Function roomcodeReload(). Called when _roomcode_reload is changed
-//RAN BY EVERYONE!
 function roomcodeReload(reason) {
-	console.log('roomcodeReload', reason)
-	switch(reason) {
-		//Should never be called at 0
-		case '1':
-		//Player closed out of browser
-		deleteRoom(roomcode);
-		alert('Someone left or closed out of their browser. Deleting room.')
-		location.reload();
-		break;
-		case '2':
-		//Admin Reloading
-		deleteRoom(roomcode);
-		alert('An admin has restarted your roomcode. Deleting room.')
-		location.reload();
-		break;
-		default:
-		//Admin messagebox
-		alert(reason)
-		break;
-	}
+  console.log('roomcodeReload', reason)
+	//Player closed out of browser
+	deleteRoom(roomcode);
+	alert('Someone left or closed out of their browser. Deleting room.')
+  location.reload();
 }
 
 //Semi-reset room/ Called in state6 to restart game
@@ -728,7 +700,7 @@ function resetRoomVariable() {
 
 //Delete Room in database
 function deleteRoom(roomcode) {
-	firebase.database().ref(roomcode).set({
+	firebase.database().ref(databasePrefix + roomcode).set({
 	});
 }
 
@@ -1301,7 +1273,7 @@ function generateNewQuestion() {
 function playerlist_reload() {
 	if (state == 1) {
 		document.getElementById("subtext_players").innerHTML = roomcode;
-		document.getElementById("playerlist_ul").innerHTML = "";
+		document.getElementById("playerlist_li").innerHTML = "";
 		roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
 		roomcode_users_ref.once('value', function(doc) {
 			if (state == 1) {
@@ -1321,7 +1293,7 @@ function playerlist_reload() {
 						var node = document.createElement("div");
 						var textnode = document.createTextNode(roomcode_users_user_username_data);
 						node.appendChild(textnode);
-						document.getElementById("playerlist_ul").appendChild(node);
+						document.getElementById("playerlist_li").appendChild(node);
 					})
 				}
 			}
