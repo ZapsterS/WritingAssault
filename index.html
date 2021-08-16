@@ -119,6 +119,13 @@ p {
 	margin: 10px 1px;
 	float: right;
 	font-size: 20px;
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+}
+
+.buttonMain:hover {
+	box-shadow: 0 4px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	border: 2px solid #ededed;
 }
 
 /* SUB CLASSES */
@@ -235,6 +242,12 @@ p {
   max-width: 700px;
 	width: 65%;
   margin: 0px 0px;
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+}
+.promptlist div:hover {
+	box-shadow: 0 4px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	border: 2px solid #ededed;
 }
 .playerlist div:first-child {
 	background-color: #222;
@@ -249,7 +262,15 @@ p {
 	float: bottom;
 	width: 30%;
 	font-size: 35px;
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
 }
+.startbtn:hover {
+	box-shadow: 0 4px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	border: 2px solid #ededed;
+}
+
+
 .promptbtn {
 	position: relative;
 	font-family: 'supria_sans';
@@ -261,6 +282,11 @@ p {
 	font-size: 30px;
 	max-width: 240px;
 }
+.promptbtn:hover {
+	box-shadow: 0 4px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	border: 2px solid #ededed;
+}
+
 .prompt_screen_div {
   background-color:rgba(73, 121, 53, 0.5);
 	padding: 30px 0px 40px 0px;
@@ -358,8 +384,7 @@ p {
 </div>
 
 <div class="writableContent horizontal" style="display: none;" id="playerlist_div">
-	<p class="sub" style="font-size: 40px;">PLAYERS</p>
-	<p id="subtext_players" class="sub question" style="font-size: 35px;"></p>
+	<p class="sub" style="font-size: 40px;"><u>PLAYERS</u></p><br>
 	<p id="subtext2_players" class="sub question" style="font-size: 30px;">WAITING FOR HOST<br>TO START</p>
 	<button class="startbtn" onclick="firebase.database().ref(databasePrefix + roomcode + '/users').update({_startgame: 1});" id="startbtn" style="cursor: pointer; display: none;">START GAME</button>
 	<div class="playerlist" id="playerlist_li">
@@ -1277,7 +1302,6 @@ function generateNewQuestion() {
 //Called whenever a player joins the room (INCLUDING SELF)
 function playerlist_reload() {
 	if (state == 1) {
-		document.getElementById("subtext_players").innerHTML = roomcode;
 		document.getElementById("playerlist_li").innerHTML = "";
 		roomcode_users_ref = firebase.database().ref(databasePrefix + roomcode + '/users');
 		roomcode_users_ref.once('value', function(doc) {
